@@ -256,7 +256,7 @@ const ProductTableAdmi: React.FC = () => {
                 type="text"
                 value={editedProduct?.name || ''}
                 onChange={(e) =>
-                  setEditedProduct({ ...editedProduct, name: e.target.value })
+                  setEditedProduct({ ...editedProduct!, name: e.target.value})
                 }
                 placeholder="Enter name"
               />
@@ -267,8 +267,8 @@ const ProductTableAdmi: React.FC = () => {
               <Form.Control
                 as="select"
                 value={editedProduct?.type || 'Breakfast'}
-                onChange={(e) =>
-                  setEditedProduct({ ...editedProduct, type: e.target.value })
+                onChange={() =>
+                  setEditedProduct({ ...editedProduct! })
                 }
               >
                 <option value="Breakfast">Breakfast</option>
@@ -281,8 +281,8 @@ const ProductTableAdmi: React.FC = () => {
               <Form.Control
                 type="number"
                 value={editedProduct?.price || ''}
-                onChange={(e) =>
-                  setEditedProduct({ ...editedProduct, price: e.target.value })
+                onChange={() =>
+                  setEditedProduct({ ...editedProduct!})
                 }
                 placeholder="Enter price"
               />
@@ -293,8 +293,8 @@ const ProductTableAdmi: React.FC = () => {
               <Form.Control
                 type="text"
                 value={editedProduct?.image || ''}
-                onChange={(e) =>
-                  setEditedProduct({ ...editedProduct, image: e.target.value })
+                onChange={() =>
+                  setEditedProduct({ ...editedProduct!})
                 }
                 placeholder="Enter image URL"
               />

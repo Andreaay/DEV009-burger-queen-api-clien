@@ -35,4 +35,30 @@ describe("LoginForm Component", () => {
 
     expect(mockUseNavigate).toHaveBeenCalledWith("/waiter-view");
   });
+
+  it("should navigate to chef-view on successful login", async () => {
+    const authenticatedUserRole = "chef";
+    localStorage.setItem("userRole", authenticatedUserRole);
+
+    const mockLoginResponse = { token: "your-token" };
+    
+    jest.spyOn(tokenRepository, "login").mockResolvedValue(mockLoginResponse);
+
+    render(<LoginForm />);
+
+    fireEvent.change(screen.getByPlaceholderText("ENTER EMAIL"), {
+      target: { value: "test2@example.com" },
+    });
+    fireEvent.change(screen.getByPlaceholderText("ENTER PASSWORD"), {
+      target: { value: "password" },
+    });
+
+    const loginButton = screen.getByText("LOGIN");
+    fireEvent.click(loginButton);
+
+    await act(async () => {});
+
+    expect(mockUseNavigate).toHaveBeenCalledWith("/chef-view");
+  });
+  
 });

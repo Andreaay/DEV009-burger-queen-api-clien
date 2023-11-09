@@ -3,7 +3,7 @@ import "./user-profile.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
-interface UserProfileProps {
+export interface UserProfileProps {
   profileType: "waiter" | "administrator" | "cook";
   waiterName: string;
   administratorName: string;

@@ -12,5 +12,4 @@ module.exports = {
       "^.+\\.module\\.css$": "identity-obj-proxy",
       "^.+\\.(css|png|jpg|jpeg)$": "<rootDir>/src/tests/fileMock.js",
     },
-    
   };
