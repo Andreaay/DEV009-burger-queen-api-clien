@@ -34,10 +34,15 @@ const ProductTableAdmi: React.FC = () => {
         authorization: 'Bearer ' + localStorage.getItem('accessToken'),
       },
     })
-      .then((response) => response.json())
-      .then((data: Product[]) => {
-        setProductsAdmi(data);
-      })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data: Product[]) => {
+      setProductsAdmi(data);
+    })
       .catch((error) => {
         console.error('Error fetching products:', error);
       });
